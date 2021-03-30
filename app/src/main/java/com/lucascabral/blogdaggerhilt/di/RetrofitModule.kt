@@ -10,6 +10,7 @@ import com.lucascabral.blogdaggerhilt.util.EntityMapper
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
+import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.components.SingletonComponent
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -18,6 +19,12 @@ import javax.inject.Singleton
 @Module
 @InstallIn(SingletonComponent::class)
 object RetrofitModule {
+
+    @Singleton
+    @Provides
+    fun provideNetworkMapper(): EntityMapper<BlogNetworkEntity, Blog>{
+        return NetworkMapper()
+    }
 
     @Singleton
     @Provides
