@@ -1,13 +1,13 @@
-package com.lucascabral.blogdaggerhilt.retrofit
+package com.lucascabral.blogdaggerhilt.room
 
 import com.lucascabral.blogdaggerhilt.model.Blog
 import com.lucascabral.blogdaggerhilt.util.EntityMapper
 import javax.inject.Inject
 
-class NetworkMapper
+class CacheMapper
 @Inject
-constructor() : EntityMapper<BlogNetworkEntity, Blog> {
-    override fun mapFromEntity(entity: BlogNetworkEntity): Blog {
+constructor() : EntityMapper<BlogCacheEntity, Blog>{
+    override fun mapFromEntity(entity: BlogCacheEntity): Blog {
         return Blog(
             id = entity.id,
             title = entity.title,
@@ -17,8 +17,8 @@ constructor() : EntityMapper<BlogNetworkEntity, Blog> {
         )
     }
 
-    override fun mapToEntity(domainModel: Blog): BlogNetworkEntity {
-        return BlogNetworkEntity(
+    override fun mapToEntity(domainModel: Blog): BlogCacheEntity {
+        return BlogCacheEntity(
             id = domainModel.id,
             title = domainModel.title,
             body = domainModel.body,
@@ -27,7 +27,7 @@ constructor() : EntityMapper<BlogNetworkEntity, Blog> {
         )
     }
 
-    fun mapFromEntityList(entities: List<BlogNetworkEntity>): List<Blog> {
+    fun mapFromEntityList(entities: List<BlogCacheEntity>): List<Blog> {
         return entities.map { mapFromEntity(it) }
     }
 }
